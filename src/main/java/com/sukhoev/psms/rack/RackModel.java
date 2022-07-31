@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,14 +18,14 @@ public class RackModel {
 
     @Id
     @SequenceGenerator(
-            name = "rack_sequence",
-            sequenceName = "rack_sequence",
+            name = "rack_model_sequence",
+            sequenceName = "rack_model_sequence",
             initialValue = 1,
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "rack_sequence"
+            generator = "rack_model_sequence"
     )
     private Long id;
     private String nameModelRack;
@@ -37,6 +39,34 @@ public class RackModel {
     private String manufacturer;
     private Integer maximumLoad;
 
+    @OneToMany(
+            mappedBy = "rackModel",
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private List<Racks> racks = new ArrayList<>();
 
-
+    public RackModel(String nameModelRack,
+                     Integer unitHeight,
+                     Integer equipmentWidth,
+                     Integer usableDepth,
+                     String doorType,
+                     Integer height,
+                     Integer width,
+                     Integer depth,
+                     String manufacturer,
+                     Integer maximumLoad
+    ) {
+        this.nameModelRack = nameModelRack;
+        this.unitHeight = unitHeight;
+        this.equipmentWidth = equipmentWidth;
+        this.usableDepth = usableDepth;
+        this.doorType = doorType;
+        this.height = height;
+        this.width = width;
+        this.depth = depth;
+        this.manufacturer = manufacturer;
+        this.maximumLoad = maximumLoad;
+    }
 }
