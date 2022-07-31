@@ -1,4 +1,4 @@
-package com.sukhoev.psvm.appuser;
+package com.sukhoev.psms.appuser;
 
 public enum AppUserRole {
 
