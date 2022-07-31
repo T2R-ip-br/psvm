@@ -1,11 +1,14 @@
 package com.sukhoev.psms.premises;
 
+import com.sukhoev.psms.rack.Racks;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,6 +35,14 @@ public class Premises {
     private Integer square;
     private Integer rackLimit;
     private String comment;
+
+    @OneToMany(
+            mappedBy = "premises",
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private List<Racks> racks = new ArrayList<>();
 
     public Premises(
             String city,

@@ -1,4 +1,4 @@
-package com.sukhoev.psms.rack;
+package com.sukhoev.psms.hardware;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -11,22 +11,25 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
-@Entity(name = "rack")
-public class Rack {
+@Entity(name = "type_current")
+public class TypeСurrent {
 
     @Id
     @SequenceGenerator(
-            name = "rack_sequence",
-            sequenceName = "rack_sequence",
+            name = "type_current_sequence",
+            sequenceName = "type_current_sequence",
             initialValue = 1,
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "rack_sequence"
+            generator = "type_current_sequence"
     )
     private Long id;
-    private String nameRack;
-    // id_premises
-    // id_model_rack
+    private String typeCurrent;
+
+
+    public TypeСurrent(String typeCurrent) {
+        this.typeCurrent = typeCurrent;
+    }
 }
