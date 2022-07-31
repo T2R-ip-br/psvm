@@ -1,6 +1,6 @@
-package com.sukhoev.psms.rack;
+package com.sukhoev.psms.rack.entity;
 
-import com.sukhoev.psms.hardware.Hardware;
+import com.sukhoev.psms.hardware.entity.Hardware;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,16 +51,16 @@ public class ConnectingHardware {
                     name = "racks_fk"
             )
     )
-    private Racks racks;
+    private Rack rack;
 
 
     public ConnectingHardware(
             String namePowerSupplyUnit,
             Hardware hardware,
-            Racks racks
+            Rack rack
     ) {
         this.namePowerSupplyUnit = namePowerSupplyUnit;
         this.hardware = hardware;
-        this.racks = racks;
+        this.rack = rack;
     }
 }

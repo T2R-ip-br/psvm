@@ -1,6 +1,6 @@
-package com.sukhoev.psms.premises;
+package com.sukhoev.psms.premises.entity;
 
-import com.sukhoev.psms.rack.Racks;
+import com.sukhoev.psms.rack.entity.Rack;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,7 +42,7 @@ public class Premises {
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.LAZY
     )
-    private List<Racks> racks = new ArrayList<>();
+    private List<Rack> racks = new ArrayList<>();
 
     public Premises(
             String city,

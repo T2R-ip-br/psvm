@@ -1,7 +1,6 @@
-package com.sukhoev.psms.rack;
+package com.sukhoev.psms.rack.entity;
 
-import com.sukhoev.psms.hardware.TypeHardware;
-import com.sukhoev.psms.premises.Premises;
+import com.sukhoev.psms.premises.entity.Premises;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity(name = "rack")
-public class Racks {
+public class Rack {
 
     @Id
     @SequenceGenerator(
@@ -63,7 +62,7 @@ public class Racks {
     )
     private List<RackConfiguration> rackConfigurations = new ArrayList<>();
 
-    public Racks(
+    public Rack(
             String nameRack,
             Premises premises,
             RackModel rackModel

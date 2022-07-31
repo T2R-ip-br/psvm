@@ -1,6 +1,6 @@
-package com.sukhoev.psms.hardware;
+package com.sukhoev.psms.hardware.entity;
 
-import com.sukhoev.psms.rack.RackConfiguration;
+import com.sukhoev.psms.rack.entity.RackConfiguration;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

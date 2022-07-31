@@ -1,7 +1,6 @@
-package com.sukhoev.psms.rack;
+package com.sukhoev.psms.rack.entity;
 
-import com.sukhoev.psms.hardware.Hardware;
-import com.sukhoev.psms.hardware.TypeСurrent;
+import com.sukhoev.psms.hardware.entity.Hardware;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,7 +42,7 @@ public class RackConfiguration {
                     name = "racks_fk"
             )
     )
-    private Racks racks;
+    private Rack rack;
 
     @ManyToOne
     @JoinColumn(
@@ -73,7 +72,7 @@ public class RackConfiguration {
             Integer occupiedUnit,
             Integer powerCableLength,
             Integer powerCableCrossSection,
-            Racks racks,
+            Rack rack,
             ConnectingHardware connectingHardware,
             Hardware hardware
     ) {
@@ -81,7 +80,7 @@ public class RackConfiguration {
         this.occupiedUnit = occupiedUnit;
         this.powerCableLength = powerCableLength;
         this.powerCableCrossSection = powerCableCrossSection;
-        this.racks = racks;
+        this.rack = rack;
         this.connectingHardware = connectingHardware;
         this.hardware = hardware;
     }
