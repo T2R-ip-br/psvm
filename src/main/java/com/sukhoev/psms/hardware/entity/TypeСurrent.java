@@ -1,4 +1,4 @@
-package com.sukhoev.psms.hardware;
+package com.sukhoev.psms.hardware.entity;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.sukhoev.psms.rack;
+package com.sukhoev.psms.rack.entity;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -45,7 +45,7 @@ public class RackModel {
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.LAZY
     )
-    private List<Racks> racks = new ArrayList<>();
+    private List<Rack> racks = new ArrayList<>();
 
     public RackModel(String nameModelRack,
                      Integer unitHeight,

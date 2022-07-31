@@ -1,14 +1,11 @@
-package com.sukhoev.psms.hardware;
+package com.sukhoev.psms.hardware.entity;
 
-import com.sukhoev.psms.rack.RackModel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter

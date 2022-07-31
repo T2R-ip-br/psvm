@@ -1,4 +1,4 @@
-package com.sukhoev.psms.appuser;
+package com.sukhoev.psms.appuser.entity;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
