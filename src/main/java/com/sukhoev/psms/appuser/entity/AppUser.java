@@ -21,8 +21,8 @@ public class AppUser implements UserDetails {
 
     @Id
     @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
+            name = "app_user_sequence",
+            sequenceName = "app_user_sequence",
             initialValue = 1,
             allocationSize = 1
     )

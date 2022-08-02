@@ -44,11 +44,11 @@ public class ConnectingHardware {
     // TODO: id rack
     @ManyToOne
     @JoinColumn(
-            name = "racks_id",
+            name = "rack_id",
             nullable = false,
             referencedColumnName = "id",
             foreignKey = @ForeignKey(
-                    name = "racks_fk"
+                    name = "rack_fk"
             )
     )
     private Rack rack;

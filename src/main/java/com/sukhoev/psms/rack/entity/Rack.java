@@ -55,7 +55,7 @@ public class Rack {
     private RackModel rackModel;
 
     @OneToMany(
-            mappedBy = "racks",
+            mappedBy = "rack",
             orphanRemoval = true,
             cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.LAZY

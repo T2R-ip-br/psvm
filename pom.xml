@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sukhoev</groupId>
-	<artifactId>psvm</artifactId>
+	<artifactId>psms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>power supply metering system</name>
 	<description>Система учёта телекоммуникационных стоек  предназначена для хранения информации о содержании стоек, автоматизации расчёта запаса допустимой мощности и поиска места для проектируемого  оборудования.</description>
