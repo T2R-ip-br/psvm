@@ -1,9 +1,6 @@
 package com.sukhoev.psms.appuser.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +13,7 @@ import java.util.Collections;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
+@ToString
 @Entity(name = "app_user")
 public class AppUser implements UserDetails {
 
@@ -39,6 +37,18 @@ public class AppUser implements UserDetails {
     private AppUserRole appUserRole;
     private Boolean locked = false;
     private Boolean enabled = false;
+
+    public AppUser(
+            String firstName,
+            String lastName,
+            String email,
+            String password
+    ) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
 
     public AppUser(
             String firstName,
