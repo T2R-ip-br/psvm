@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="UTF-8"/>
+    <title>Регистрация</title>
+    </head>
+
+    <body>
+        <div style="margin-left:50px ">
+            <h1>Регистрация</h1>
+
+            <form method="POST" th:action="@{/api/v1/registration}" th:object="${registrationRequest}">
+                <input id="firstName" placeholder="First Name" required type="text" th:field="*{firstName}"/> <br><br>
+                <input id="lastName" placeholder="Last Name" required type="text" th:field="*{lastName}"/> <br><br>
+                <input id="email" placeholder="First email" required type="text" th:field="*{email}"/> <br><br>
+                <input id="password" placeholder="Password" required type="text" th:field="*{password}"/> <br><br>
+                <input type="submit" value="Create User">
+            </form>
+        </div>
+    </body>
+</html>
