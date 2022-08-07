@@ -1,10 +1,7 @@
 package com.sukhoev.psms.rack.entity;
 
 import com.sukhoev.psms.premises.entity.Premises;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -70,5 +67,15 @@ public class Rack {
         this.nameRack = nameRack;
         this.premises = premises;
         this.rackModel = rackModel;
+    }
+
+    @Override
+    public String toString() {
+        return "Rack{" +
+                "id=" + id +
+                ", nameRack='" + nameRack + '\'' +
+                ", premises=" + premises +
+                ", rackModel=" + rackModel +
+                '}';
     }
 }

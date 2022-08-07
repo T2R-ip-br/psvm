@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8"/>
+  <title>Добавить помещение</title>
+</head>
+
+  <body>
+    <div style="margin-left:50px ">
+      <h1>Добавить помещение</h1>
+
+      <form method="POST" th:action="@{/api/v1/premises/add}" th:object="${premises}">
+        <input id="city" placeholder="Город" required type="text" th:field="*{city}"/> <br><br>
+        <input id="building" placeholder="Улица дом" required type="text" th:field="*{building}"/> <br><br>
+        <input id="room" placeholder="Помещение" required type="text" th:field="*{room}"/> <br><br>
+        <input id="square" placeholder="Площадь" required type="text" th:field="*{square}"/> <br><br>
+        <input id="rackLimit" placeholder="Максимальное количество стоек" required type="text" th:field="*{rackLimit}"/> <br><br>
+        <input id="comment" placeholder="Комментарий" required type="text" th:field="*{comment}"/> <br><br>
+        <input type="submit" value="Добавить">
+      </form>
+    </div>
+  </body>
+</html>

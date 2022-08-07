@@ -23,16 +23,14 @@ public class RegistrationController {
     @PostMapping()
     public String registration(@ModelAttribute RegistrationRequest registrationRequest) {
 
-        System.out.println(registrationRequest.toString());
         registrationService.registration(registrationRequest);
-        return "registration";
+        return "confirm-email";
     }
 
     @GetMapping(path = "{token}")
     public String confirm(@PathVariable("token") String token) {
-        System.out.println(token);
         registrationService.confirmationToken(token);
-        return "ok";
+        return "email-confirmed";
     }
 }
 
