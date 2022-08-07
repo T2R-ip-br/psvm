@@ -22,8 +22,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/api/v1/registration*/**").permitAll()
-                .antMatchers("/**").hasRole("ADMIN")
-                .antMatchers("/api/v1/**").hasAnyRole("USER", "ADMIN").and().formLogin();
+                .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
+                .antMatchers("/api/v1/**").hasAnyRole("ADMIN", "USER")
+                .and().csrf().disable()
+                .formLogin()
+                    .loginProcessingUrl("/login")
+                    .defaultSuccessUrl("/api/v1/premises", true);
     }
 
     @Bean

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Выбор помещения</title>
+</head>
+<body>
+    <h1>Выбор помещения</h1>
+
+    <table>
+        <tr>
+            <th style="min-width:150px; align:center">Город</th>
+            <th style="min-width:150px; align:center">Здание</th>
+            <th style="min-width:150px; align:center">Помещение</th>
+        </tr>
+        <tr th:each="premises : ${premises}">
+            <td th:text="${premises.city}" align="center"></td>
+            <td th:text="${premises.building}" align="center"></td>
+            <td th:text="${premises.room}" align="center"></td>
+            <td><button th:onclick="'window.location.href = \'' + @{/api/v1/premises/{id}(id=${premises.id})} + '\''">Перейти</button></td>
+        </tr>
+    </table>
+    <button onclick="window.location.href = '/api/v1/premises/add'">Добавить помещение</button>
+</body>
+</html>
