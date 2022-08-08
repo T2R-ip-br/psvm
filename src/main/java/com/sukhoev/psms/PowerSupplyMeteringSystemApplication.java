@@ -11,4 +11,9 @@ public class PowerSupplyMeteringSystemApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PowerSupplyMeteringSystemApplication.class, args);
 	}
+
+	// TODO: реализовать методы добавления всех сущностей
+	// TODO: реализовать методы отображения записей по  id
+	// TODO: реализовать методы редактирования записей
+	// TODO: реализовать методы удаления записей для всех сущностей
 }

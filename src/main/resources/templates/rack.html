@@ -7,7 +7,22 @@
   </head>
 
   <body>
+
     <h1>Стойка: <span th:text="${rack.nameRack}"></span></h1>
+
+    <p>г. <span th:text="${premises.city}"></span>, ул. <span th:text="${premises.building}"></span>, п. <span th:text="${premises.room}"></span></p>
+
+    <br>
+    <p>Модель стойки: <span th:text="${rackModel.nameModelRack}"></span></p>
+    <p>Высота unit: <span th:text="${rackModel.unitHeight}"></span></p>
+    <p>Ширина оборудования: <span th:text="${rackModel.equipmentWidth}"></span></p>
+    <p>Полезная глубина: <span th:text="${rackModel.usableDepth}"></span></p>
+    <p>Тип двери: <span th:text="${rackModel.doorType}"></span></p>
+    <p>Высота стойки: <span th:text="${rackModel.height}"></span></p>
+    <p>Ширина стойки: <span th:text="${rackModel.width}"></span></p>
+    <p>Глубина стойки: <span th:text="${rackModel.depth}"></span></p>
+    <p>Производитель: <span th:text="${rackModel.manufacturer}"></span></p>
+    <p>Максимальная нагрузка: <span th:text="${rackModel.maximumLoad}"></span></p>
 
   </body>
 
