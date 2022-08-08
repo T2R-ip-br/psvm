@@ -23,4 +23,8 @@ public class RackService {
 
         return optRack.get();
     }
+
+    public void addRack(Rack rack) {
+        rackRepository.save(rack);
+    }
 }

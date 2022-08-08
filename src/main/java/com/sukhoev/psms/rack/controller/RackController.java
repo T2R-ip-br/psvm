@@ -5,6 +5,7 @@ import com.sukhoev.psms.premises.service.PremisesService;
 import com.sukhoev.psms.rack.entity.Rack;
 import com.sukhoev.psms.rack.entity.RackConfiguration;
 import com.sukhoev.psms.rack.entity.RackModel;
+import com.sukhoev.psms.rack.service.RackModelService;
 import com.sukhoev.psms.rack.service.RackService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ import java.util.List;
 public class RackController {
 
     private final RackService rackService;
+    private final PremisesService premisesService;
+    private final RackModelService rackModelService;
 
 /*    @RequestMapping
     public String choosingPremises(Model model) {
@@ -31,8 +34,8 @@ public class RackController {
     @GetMapping("/{rackId}")
     public String premises(
             @PathVariable("rackId") Long rackId,
-            Model model) {
-
+            Model model
+    ) {
         Rack rack = rackService.findById(rackId);
         Premises premises = rack.getPremises();
         RackModel rackModel = rack.getRackModel();
@@ -43,16 +46,25 @@ public class RackController {
         return "rack";
     }
 
-/*    @RequestMapping("/add")
-    public String addPremises(Model model) {
-        model.addAttribute("premises", new Premises());
-        return "add-premises";
+    @RequestMapping("/add/{premisesId}")
+    public String addRack(
+            @PathVariable("premisesId") Long premisesId,
+            Model model
+    ) {
+        List<RackModel> rackModels = rackModelService.findAll();
+        List<Premises> premises = premisesService.findAll();
+        model.addAttribute("rack", new Rack());
+        model.addAttribute("premises", premisesService.findById(premisesId));
+        model.addAttribute("rackModels", rackModels);
+        model.addAttribute("allPremises", premises);
+        return "add-rack";
     }
 
-    @PostMapping("/add")
-    public ModelAndView addPremises(@ModelAttribute Premises premises) {
-        System.out.println(premises.toString());
-        premisesService.addPremises(premises);
-        return new ModelAndView("redirect:/api/v1/premises");
-    }*/
+    @PostMapping("/add/{premisesId}")
+    public ModelAndView addRack(
+            @PathVariable("premisesId") int premisesId,
+            @ModelAttribute Rack rack) {
+        rackService.addRack(rack);
+        return new ModelAndView("redirect:/api/v1/premises/" + premisesId);
+    }
 }

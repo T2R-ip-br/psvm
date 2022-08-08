@@ -20,7 +20,7 @@ public class RackModel {
     @SequenceGenerator(
             name = "rack_model_sequence",
             sequenceName = "rack_model_sequence",
-            initialValue = 1,
+            initialValue = 10,
             allocationSize = 1
     )
     @GeneratedValue(

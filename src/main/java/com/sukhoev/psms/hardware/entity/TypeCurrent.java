@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity(name = "type_current")
-public class TypeСurrent {
+public class TypeCurrent {
 
     @Id
     @SequenceGenerator(
@@ -29,7 +29,7 @@ public class TypeСurrent {
     private String typeCurrent;
 
 
-    public TypeСurrent(String typeCurrent) {
+    public TypeCurrent(String typeCurrent) {
         this.typeCurrent = typeCurrent;
     }
 }

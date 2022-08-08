@@ -58,7 +58,7 @@ public class Hardware {
                     name = "type_current_fk"
             )
     )
-    private TypeСurrent typeСurrent;
+    private TypeCurrent typeСurrent;
 
     @OneToMany(
             mappedBy = "hardware",
@@ -77,7 +77,7 @@ public class Hardware {
             Integer width,
             Integer depth,
             TypeHardware typeHardware,
-            TypeСurrent typeСurrent
+            TypeCurrent typeСurrent
     ) {
         this.nameHardware = nameHardware;
         this.voltage = voltage;

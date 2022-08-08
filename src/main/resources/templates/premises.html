@@ -6,11 +6,13 @@
         <title th:text="${premises.room}"></title>
     </head>
     <body>
-    <h1>Помещение: <span th:text="${premises.room}"></span></h1>
+        <h1>Помещение: <span th:text="${premises.room}"></span></h1>
+
         <p>г. <span th:text="${premises.city}"></span> ул. <span th:text="${premises.building}"></span></p>
         <p>Площадь помещения: <span th:text="${premises.square}"></span> м²</p>
         <p>Максимальное количество стоек: <span th:text="${premises.rackLimit}"></span></p>
         <p>Комментарий: <span th:text="${premises.comment}"></span></p>
+
         <table>
             <tr>
                 <th style="min-width:150px; align:center">Стойка</th>
@@ -19,5 +21,7 @@
                 <td th:text="${rack.nameRack}" align="center"></td>
                 <td><button th:onclick="'window.location.href = \'' + @{/api/v1/rack/{id}(id=${rack.id})} + '\''">Перейти</button></td>            </tr>
         </table>
+
+        <button th:onclick="'window.location.href = \'' + @{/api/v1/rack/add/{id}(id=${premises.id})} + '\''">Добавить стойку</button>
     </body>
 </html>
