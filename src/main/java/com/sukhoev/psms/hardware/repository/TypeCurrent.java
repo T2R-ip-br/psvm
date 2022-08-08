@@ -1,4 +1,8 @@
 package com.sukhoev.psms.hardware.repository;
 
-public interface TypeCurrent {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TypeCurrent extends JpaRepository<TypeCurrent, Long> {
 }
