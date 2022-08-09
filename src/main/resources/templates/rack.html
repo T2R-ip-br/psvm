@@ -23,7 +23,21 @@
     <p>Глубина стойки: <span th:text="${rackModel.depth}"></span></p>
     <p>Производитель: <span th:text="${rackModel.manufacturer}"></span></p>
     <p>Максимальная нагрузка: <span th:text="${rackModel.maximumLoad}"></span></p>
+    <br>
 
+    <p>Фасад шкафа</p>
+
+    <table style="border: 1px solid grey">
+      <tr>
+        <th style="min-width:150px; border: 1px solid grey; align:center">Оборудование</th>
+        <th style="min-width:150px; border: 1px solid grey; align:center">Unit</th>
+      </tr>
+      <tr th:each="rackConfiguration : ${rackConfigurations}">
+        <td th:text="${rackConfiguration.nameHardware}" align="center" style="border: 1px solid grey"></td>
+        <td th:text="${rackConfiguration.occupiedUnit}" align="center" style="border: 1px solid grey"></td>
+    </table>
+
+     <br>
     <button th:onclick="'window.location.href = \'' + @{/api/v1/rack-configuration/add/{id}(id=${rack.id})} + '\''">Добавить оборудование в стойку</button> <br><br>
     <button th:onclick="'window.location.href = \'' + @{/api/v1/connecting-hardware/add/{id}(id=${rack.id})} + '\''">Добавить блок питания в стойку</button> <br><br>
     <button th:onclick="'window.location.href = \'' + @{/api/v1/hardware/add/{id}(id=${rack.id})} + '\''">Добавить оборудование в базу</button>

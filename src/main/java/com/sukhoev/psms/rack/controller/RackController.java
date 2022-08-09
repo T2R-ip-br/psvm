@@ -5,6 +5,7 @@ import com.sukhoev.psms.premises.service.PremisesService;
 import com.sukhoev.psms.rack.entity.Rack;
 import com.sukhoev.psms.rack.entity.RackConfiguration;
 import com.sukhoev.psms.rack.entity.RackModel;
+import com.sukhoev.psms.rack.service.RackConfigurationService;
 import com.sukhoev.psms.rack.service.RackModelService;
 import com.sukhoev.psms.rack.service.RackService;
 import lombok.AllArgsConstructor;
@@ -23,13 +24,7 @@ public class RackController {
     private final RackService rackService;
     private final PremisesService premisesService;
     private final RackModelService rackModelService;
-
-/*    @RequestMapping
-    public String choosingPremises(Model model) {
-        List<Premises> premises = premisesService.findAll();
-        model.addAttribute("premises", premises);
-        return "choosing-premises";
-    }*/
+    private final RackConfigurationService rackConfigurationService;
 
     @GetMapping("/{rackId}")
     public String premises(
@@ -39,9 +34,11 @@ public class RackController {
         Rack rack = rackService.findById(rackId);
         Premises premises = rack.getPremises();
         RackModel rackModel = rack.getRackModel();
+        List<RackConfiguration> rackConfigurations = rackConfigurationService.findAllByRackId(rackId, rackModel.getUnitHeight(), rack);
         model.addAttribute("rack", rack);
         model.addAttribute("premises", premises);
         model.addAttribute("rackModel", rackModel);
+        model.addAttribute("rackConfigurations", rackConfigurations);
 
         return "rack";
     }
