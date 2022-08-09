@@ -39,6 +39,7 @@ public class RackConfigurationService {
             }
         }
 
+        // Сортируем список по убыванию номеров unit
         UnitComparator unitComparator = new UnitComparator();
         rackConfigurations.sort(unitComparator);
 
