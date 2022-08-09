@@ -24,6 +24,9 @@
     <p>Производитель: <span th:text="${rackModel.manufacturer}"></span></p>
     <p>Максимальная нагрузка: <span th:text="${rackModel.maximumLoad}"></span></p>
 
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/rack-configuration/add/{id}(id=${rack.id})} + '\''">Добавить оборудование в стойку</button> <br><br>
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/connecting-hardware/add/{id}(id=${rack.id})} + '\''">Добавить блок питания в стойку</button> <br><br>
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/hardware/add/{id}(id=${rack.id})} + '\''">Добавить оборудование в базу</button>
   </body>
 
 </html>

@@ -40,6 +40,7 @@ public class HardwareCategory {
     private List<TypeHardware> typeHardware = new ArrayList<>();
 
     public HardwareCategory(String hardwareCategory) {
+
         this.hardwareCategory = hardwareCategory;
     }
 }

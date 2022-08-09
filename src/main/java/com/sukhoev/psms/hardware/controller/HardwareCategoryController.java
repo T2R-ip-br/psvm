@@ -8,4 +8,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(path = "/api/v1/hardware-category")
 @AllArgsConstructor
 public class HardwareCategoryController {
+
 }

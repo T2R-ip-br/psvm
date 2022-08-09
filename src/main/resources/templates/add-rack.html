@@ -22,7 +22,7 @@
       <option th:each="model : ${rackModels}" th:value="${model.id}" th:text="${model.nameModelRack} + ', Высота unit: ' + ${model.unitHeight} + ', Ширина оборудования: ' + ${model.equipmentWidth} + ' мм, Полезная глубина: ' + ${model.usableDepth} + ' мм' "></option>
     </select> <br><br>
 
-    <input type="submit" value="Добавить">
+    <input type="submit" value="Добавить"> <br>
   </form>
   <button th:onclick="'window.location.href = \'' + @{/api/v1/rack-model/add/{id}(id=${premises.id})} + '\''">Добавить модель стойки</button>
 </div>
