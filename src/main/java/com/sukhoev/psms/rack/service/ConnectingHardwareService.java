@@ -27,4 +27,14 @@ public class ConnectingHardwareService {
     public void save(ConnectingHardware connectingHardware) {
         connectingHardwareRepository.save(connectingHardware);
     }
+
+    public List<ConnectingHardware> findAllByRackId(Long rackId) {
+        List<ConnectingHardware> connectingHardwares = connectingHardwareRepository.findAllByRackId(rackId);
+
+        if(connectingHardwares.isEmpty()) {
+            throw new IllegalStateException("Connecting hardware not found");
+        }
+
+        return connectingHardwares;
+    }
 }

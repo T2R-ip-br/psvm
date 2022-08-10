@@ -10,10 +10,7 @@ import com.sukhoev.psms.rack.entity.Rack;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -27,8 +24,19 @@ public class HardwareController {
     private final TypeCurrentService typeCurrentService;
     private final TypeHardwareService typeHardwareService;
 
+    @GetMapping("{hardwareId}")
+    public String getHardware(
+            @PathVariable("hardwareId") Long hardwareId,
+            Model model
+    ) {
+        Hardware hardware = hardwareService.findById(hardwareId);
+        System.out.println(hardware.toString());
+        model.addAttribute("hardware", hardware);
+        return "hardware";
+    }
+
     @RequestMapping("/add/{rackId}")
-    public String addRack(
+    public String addHardware(
             @PathVariable("rackId") int rackId,
             Model model
     ) {
@@ -42,7 +50,7 @@ public class HardwareController {
     }
 
     @PostMapping("/add/{rackId}")
-    public ModelAndView addRack(
+    public ModelAndView addHardware(
             @PathVariable("rackId") int rackId,
             @ModelAttribute Hardware hardware) {
         hardwareService.save(hardware);

@@ -38,7 +38,7 @@ public class RackConfigurationController {
     ) {
 
         List<Rack> racks = rackService.findAll();
-        List<ConnectingHardware> connectingHardware = connectingHardwareService.findAll();
+        List<ConnectingHardware> connectingHardware = connectingHardwareService.findAllByRackId(rackId);
         List<Hardware> hardware = hardwareService.findAll();
         model.addAttribute("rackConfiguration", new RackConfiguration());
         model.addAttribute("racks", racks);

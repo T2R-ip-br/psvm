@@ -33,7 +33,7 @@ public class Hardware {
     private String nameHardware;
     private Integer voltage;
     private Integer amperage;
-    private Integer electricityСonsumption;
+    private Integer electricityConsumption;
     private Integer requiredNumberUnits;
     private Integer width;
     private Integer depth;
@@ -58,7 +58,7 @@ public class Hardware {
                     name = "type_current_fk"
             )
     )
-    private TypeCurrent typeСurrent;
+    private TypeCurrent typeCurrent;
 
     @OneToMany(
             mappedBy = "hardware",
@@ -72,21 +72,35 @@ public class Hardware {
             String nameHardware,
             Integer voltage,
             Integer amperage,
-            Integer electricityСonsumption,
+            Integer electricityConsumption,
             Integer requiredNumberUnits,
             Integer width,
             Integer depth,
             TypeHardware typeHardware,
-            TypeCurrent typeСurrent
+            TypeCurrent typeCurrent
     ) {
         this.nameHardware = nameHardware;
         this.voltage = voltage;
         this.amperage = amperage;
-        this.electricityСonsumption = electricityСonsumption;
+        this.electricityConsumption = electricityConsumption;
         this.requiredNumberUnits = requiredNumberUnits;
         this.width = width;
         this.depth = depth;
         this.typeHardware = typeHardware;
-        this.typeСurrent = typeСurrent;
+        this.typeCurrent = typeCurrent;
+    }
+
+    @Override
+    public String toString() {
+        return "Hardware{" +
+                "id=" + id +
+                ", nameHardware='" + nameHardware + '\'' +
+                ", voltage=" + voltage +
+                ", amperage=" + amperage +
+                ", electricityConsumption=" + electricityConsumption +
+                ", requiredNumberUnits=" + requiredNumberUnits +
+                ", width=" + width +
+                ", depth=" + depth +
+                '}';
     }
 }

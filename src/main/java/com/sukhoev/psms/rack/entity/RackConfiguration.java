@@ -86,6 +86,7 @@ public class RackConfiguration {
     public RackConfiguration(String nameHardware, Integer occupiedUnit) {
         this.nameHardware = nameHardware;
         this.occupiedUnit = occupiedUnit;
+
     }
 
     @Override

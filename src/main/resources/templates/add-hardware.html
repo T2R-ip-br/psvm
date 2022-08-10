@@ -14,7 +14,7 @@
     <input id="nameHardware" placeholder="Название оборудования" required type="text" th:field="*{nameHardware}"/> <br><br>
     <input id="voltage" placeholder="Напряжение" required type="text" th:field="*{voltage}"/> <br><br>
     <input id="amperage" placeholder="Сила тока" required type="text" th:field="*{amperage}"/> <br><br>
-    <input id="electricityСonsumption" placeholder="Потребление" required type="text" th:field="*{electricityСonsumption}"/> <br><br>
+    <input id="electricityConsumption" placeholder="Потребление" required type="text" th:field="*{electricityConsumption}"/> <br><br>
     <input id="requiredNumberUnits" placeholder="Необходимое количество units" required type="text" th:field="*{requiredNumberUnits}"/> <br><br>
     <input id="width" placeholder="Ширина" required type="text" th:field="*{width}"/> <br><br>
     <input id="depth" placeholder="Глубина" required type="text" th:field="*{depth}"/> <br><br>
@@ -23,7 +23,7 @@
       <option th:each="typeHardware : ${typeHardware}" th:value="${typeHardware.id}" th:text="${typeHardware.typeHardware}"></option>
     </select> <br><br>
 
-    <select th:field="*{typeСurrent}">
+    <select th:field="*{typeCurrent}">
       <option th:each="typeCurrents : ${typeCurrents}" th:value="${typeCurrents.id}" th:text="${typeCurrents.typeCurrent}"></option>
     </select> <br><br>
 

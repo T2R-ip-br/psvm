@@ -35,6 +35,7 @@
       <tr th:each="rackConfiguration : ${rackConfigurations}">
         <td th:text="${rackConfiguration.nameHardware}" align="center" style="border: 1px solid grey"></td>
         <td th:text="${rackConfiguration.occupiedUnit}" align="center" style="border: 1px solid grey"></td>
+        <td align="center"><button th:onclick="'window.location.href = \'' + @{/api/v1/hardware/{id}(id=${rackConfiguration.hardware.id})} + '\''" th:if="${rackConfiguration.hardware != null}">🛈</button></td>
     </table>
 
      <br>
