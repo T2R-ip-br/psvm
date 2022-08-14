@@ -129,9 +129,6 @@ public class RackConfigurationService {
             }
         }
 
-        System.out.println("########################");
-        initialRackConfiguration.forEach(System.out::println);
-
         return initialRackConfiguration;
     }
 }

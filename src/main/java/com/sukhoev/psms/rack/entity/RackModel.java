@@ -42,7 +42,7 @@ public class RackModel {
     @OneToMany(
             mappedBy = "rackModel",
             orphanRemoval = true,
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            cascade = {CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
     private List<Rack> racks = new ArrayList<>();

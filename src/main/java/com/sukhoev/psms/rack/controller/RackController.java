@@ -64,4 +64,23 @@ public class RackController {
         rackService.addRack(rack);
         return new ModelAndView("redirect:/api/v1/premises/" + premisesId);
     }
+
+    @GetMapping("/delete/{rackId}")
+    public String deleteRack(
+            @PathVariable("rackId") Long rackId,
+            Model model
+    ) {
+        Rack rack = rackService.findById(rackId);
+        model.addAttribute("rack", rack);
+        return "delete-rack";
+    }
+
+    @PostMapping("/delete/{rackId}")
+    public ModelAndView deleteRack(
+            @PathVariable("rackId") Long rackId
+    ) {
+        Long premisesId = rackService.findById(rackId).getId();
+        rackService.deleteRack(rackId);
+        return new ModelAndView("redirect:/api/v1/premises/" + premisesId);
+    }
 }

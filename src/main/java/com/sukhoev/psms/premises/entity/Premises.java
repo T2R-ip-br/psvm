@@ -36,8 +36,8 @@ public class Premises {
     @OneToMany(
             mappedBy = "premises",
             orphanRemoval = true,
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
-            fetch = FetchType.EAGER
+            cascade = {CascadeType.PERSIST},
+            fetch = FetchType.LAZY
     )
     private List<Rack> racks = new ArrayList<>();
 

@@ -2,6 +2,7 @@ package com.sukhoev.psms.rack.entity;
 
 import com.sukhoev.psms.premises.entity.Premises;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -58,6 +59,14 @@ public class Rack {
             fetch = FetchType.LAZY
     )
     private List<RackConfiguration> rackConfigurations = new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "rack",
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private List<ConnectingHardware> connectingHardware = new ArrayList<>();
 
     public Rack(
             String nameRack,

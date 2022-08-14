@@ -1,5 +1,6 @@
 package com.sukhoev.psms.hardware.entity;
 
+import com.sukhoev.psms.rack.entity.ConnectingHardware;
 import com.sukhoev.psms.rack.entity.RackConfiguration;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -63,10 +64,18 @@ public class Hardware {
     @OneToMany(
             mappedBy = "hardware",
             orphanRemoval = true,
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            cascade = {CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
     private List<RackConfiguration> rackConfigurations = new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "hardware",
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST},
+            fetch = FetchType.LAZY
+    )
+    private List<ConnectingHardware> connectingHardware = new ArrayList<>();
 
     public Hardware(
             String nameHardware,
