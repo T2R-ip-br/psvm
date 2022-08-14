@@ -29,7 +29,8 @@
             <option th:each="hardware : ${hardware}" th:value="${hardware.id}" th:text="${hardware.nameHardware}"></option>
         </select> <br><br>
 
-        <input type="submit" value="Добавить">
+        <input type="submit" value="Добавить"> <br><br>
+        <button th:onclick="'window.location.href = \'' + @{/api/v1/hardware/add/{id}(id=${rackId.id})} + '\''">Добавить оборудование в базу</button>
     </form>
 </div>
 </body>

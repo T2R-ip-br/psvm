@@ -83,10 +83,10 @@ public class RackConfiguration {
         this.hardware = hardware;
     }
 
-    public RackConfiguration(String nameHardware, Integer occupiedUnit) {
+    public RackConfiguration(String nameHardware, Integer occupiedUnit, Integer powerCableLength) {
         this.nameHardware = nameHardware;
         this.occupiedUnit = occupiedUnit;
-
+        this.powerCableLength = powerCableLength;
     }
 
     @Override
@@ -95,6 +95,8 @@ public class RackConfiguration {
                 "id=" + id +
                 ", nameHardware='" + nameHardware + '\'' +
                 ", occupiedUnit=" + occupiedUnit +
+                ", powerCableLength=" + powerCableLength +
+                ", powerCableCrossSection=" + powerCableCrossSection +
                 '}';
     }
 }

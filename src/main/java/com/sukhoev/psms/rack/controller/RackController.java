@@ -34,7 +34,7 @@ public class RackController {
         Rack rack = rackService.findById(rackId);
         Premises premises = rack.getPremises();
         RackModel rackModel = rack.getRackModel();
-        List<RackConfiguration> rackConfigurations = rackConfigurationService.findAllByRackId(rackId, rackModel.getUnitHeight(), rack);
+        List<RackConfiguration> rackConfigurations = rackConfigurationService.findAllByRackId(rackId, rackModel.getUnitHeight());
         model.addAttribute("rack", rack);
         model.addAttribute("premises", premises);
         model.addAttribute("rackModel", rackModel);

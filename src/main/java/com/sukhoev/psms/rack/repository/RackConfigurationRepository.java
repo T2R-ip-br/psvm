@@ -11,4 +11,6 @@ public interface RackConfigurationRepository extends JpaRepository<RackConfigura
     List<RackConfiguration> findAllById(Long rackId);
 
     List<RackConfiguration> findAllByRackId(Long rackId);
+
+    RackConfiguration findByRackIdAndOccupiedUnit(Long rackId, Integer occupiedUnit);
 }
