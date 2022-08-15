@@ -131,4 +131,19 @@ public class RackConfigurationService {
 
         return initialRackConfiguration;
     }
+
+    public RackConfiguration findById(Long rackConfigurationId) {
+
+        Optional<RackConfiguration> optionalRackConfiguration = rackConfigurationRepository.findById(rackConfigurationId);
+
+        if(!optionalRackConfiguration.isPresent()) {
+            throw new IllegalStateException("rackConfiguration not found");
+        }
+
+        return optionalRackConfiguration.get();
+    }
+
+    public void deleteRackConfiguration(Long rackConfigurationId) {
+        rackConfigurationRepository.deleteById(rackConfigurationId);
+    }
 }

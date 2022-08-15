@@ -41,7 +41,6 @@ public class RackService {
     }
 
     public void deleteRack(Long rackId) {
-        System.out.println("#####################");
         rackRepository.deleteById(rackId);
     }
 }

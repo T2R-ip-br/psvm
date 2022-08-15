@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Удаление оборудования из стойки?</title>
+</head>
+<body>
+<h1>Вы действительно хотите убрать оборудование "<span th:text="${rackConfiguration.nameHardware}"></span>" из стойки <span th:text="${rackConfiguration.rack.nameRack}"></span></h1>
+
+<form th:action="@{/api/v1/rack-configuration/delete/{id}(id=${rackConfiguration.id})}" method="post">
+  <input type="submit" value="Убрать">
+</form>
+<button th:onclick="'window.location.href = \'' + @{/api/v1/rack/{id}(id=${rackConfiguration.rack.id})} + '\''">Отмена</button>
+</body>
+</html>

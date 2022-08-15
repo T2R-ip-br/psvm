@@ -13,10 +13,7 @@ import com.sukhoev.psms.rack.service.RackService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -53,6 +50,25 @@ public class RackConfigurationController {
             @PathVariable("rackId") int rackId,
             @ModelAttribute RackConfiguration rackConfiguration) {
         rackConfigurationService.save(rackConfiguration);
+        return new ModelAndView("redirect:/api/v1/rack/" + rackId);
+    }
+
+    @GetMapping("/delete/{rackConfigurationId}")
+    public String deleteRackConfiguration(
+            @PathVariable("rackConfigurationId") Long rackConfigurationId,
+            Model model
+    ) {
+        RackConfiguration rackConfiguration = rackConfigurationService.findById(rackConfigurationId);
+        model.addAttribute("rackConfiguration", rackConfiguration);
+        return "delete-rack-configuration";
+    }
+
+    @PostMapping("/delete/{rackConfigurationId}")
+    public ModelAndView deleteRackConfiguration(
+            @PathVariable("rackConfigurationId") Long rackConfigurationId
+    ) {
+        Long rackId = rackConfigurationService.findById(rackConfigurationId).getRack().getId();
+        rackConfigurationService.deleteRackConfiguration(rackConfigurationId);
         return new ModelAndView("redirect:/api/v1/rack/" + rackId);
     }
 }

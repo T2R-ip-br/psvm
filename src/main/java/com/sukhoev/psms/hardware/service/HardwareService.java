@@ -1,5 +1,6 @@
 package com.sukhoev.psms.hardware.service;
 
+import com.sukhoev.psms.hardware.comparators.HardwareComparator;
 import com.sukhoev.psms.hardware.entity.Hardware;
 import com.sukhoev.psms.hardware.repository.HardwareRepository;
 import com.sukhoev.psms.premises.entity.Premises;
@@ -27,6 +28,9 @@ public class HardwareService {
         if(hardware.isEmpty()) {
             throw new IllegalStateException("Hardware not found");
         }
+
+        HardwareComparator hardwareComparator = new HardwareComparator();
+        hardware.sort(hardwareComparator);
 
         return hardware;
     }

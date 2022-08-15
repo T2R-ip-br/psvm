@@ -65,6 +65,17 @@
           </button>
         </td>
 
+        <td
+                th:rowspan="${rackConfiguration.hardware.requiredNumberUnits}"
+                th:if="${rackConfiguration.hardware != null}">
+          <button
+                  th:onclick="'window.location.href = \'' + @{/api/v1/rack-configuration/delete/{id}(id=${rackConfiguration.id})} + '\''"
+                  th:if="${rackConfiguration.hardware != null}"
+                  th:title="'Убрать оборудование ' + ${rackConfiguration.hardware.nameHardware} + ' из стойки'">
+            ⊗
+          </button>
+        </td>
+
     </table>
 
      <br>

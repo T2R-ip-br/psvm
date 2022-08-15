@@ -24,6 +24,13 @@ public class HardwareController {
     private final TypeCurrentService typeCurrentService;
     private final TypeHardwareService typeHardwareService;
 
+    @GetMapping
+    public String hardware(Model model) {
+        List<Hardware> hardware = hardwareService.findAll();
+        model.addAttribute("hardware", hardware);
+        return "hardware";
+    }
+
     @GetMapping("{hardwareId}")
     public String getHardware(
             @PathVariable("hardwareId") Long hardwareId,
@@ -32,7 +39,7 @@ public class HardwareController {
         Hardware hardware = hardwareService.findById(hardwareId);
         System.out.println(hardware.toString());
         model.addAttribute("hardware", hardware);
-        return "hardware";
+        return "hardware-info";
     }
 
     @RequestMapping("/add/{rackId}")
@@ -46,7 +53,7 @@ public class HardwareController {
         model.addAttribute("typeCurrents", typeCurrents);
         model.addAttribute("typeHardware", typeHardware);
         model.addAttribute("rackId", rackId);
-        return "add-hardware";
+        return "add-hardware-from-rack";
     }
 
     @PostMapping("/add/{rackId}")
@@ -55,5 +62,24 @@ public class HardwareController {
             @ModelAttribute Hardware hardware) {
         hardwareService.save(hardware);
         return new ModelAndView("redirect:/api/v1/rack/" + rackId);
+    }
+
+    @RequestMapping("/add")
+    public String addHardware(
+            Model model
+    ) {
+        List<TypeCurrent> typeCurrents = typeCurrentService.findAll();
+        List<TypeHardware> typeHardware = typeHardwareService.findAll();
+        model.addAttribute("hardware", new Hardware());
+        model.addAttribute("typeCurrents", typeCurrents);
+        model.addAttribute("typeHardware", typeHardware);
+        return "add-hardware-from-hardware";
+    }
+
+    @PostMapping("/add")
+    public ModelAndView addHardware(
+            @ModelAttribute Hardware hardware) {
+        hardwareService.save(hardware);
+        return new ModelAndView("redirect:/api/v1/hardware/");
     }
 }
