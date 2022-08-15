@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="hardware (hardware)">
+    <meta charset="UTF-8">
+    <title th:text="${hardware.nameHardware}"></title>
+</head>
+    <body>
+
+        <h1>Оборудование: <span th:text="${hardware.nameHardware}"></span></h1>
+
+        <p>Тип оборудования: <span th:text="${hardware.typeHardware.typeHardware}"></span></p>
+        <p>Напряжение: <span th:text="${hardware.voltage}"></span> В</p>
+        <p>Сила тока: <span th:text="${hardware.amperage}"></span> А</p>
+        <p>Потребление: <span th:text="${hardware.electricityConsumption}"></span> Вт</p>
+        <p>Тип тока: <span th:text="${hardware.typeCurrent.typeCurrent}"></span></p>
+        <p>Необходимое количество units: <span th:text="${hardware.requiredNumberUnits}"></span> u</p>
+        <p>Ширина: <span th:text="${hardware.width}"></span> мм</p>
+        <p>глубина: <span th:text="${hardware.depth}"></span> мм</p>
+
+    </body>
+</html>

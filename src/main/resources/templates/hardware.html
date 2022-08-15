@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<head th:fragment="hardware (hardware)">
+<head>
     <meta charset="UTF-8">
-    <title th:text="${hardware.nameHardware}"></title>
+    <title>Просмотр оборудования</title>
 </head>
-    <body>
+<body>
+<h1>Просмотр оборудования</h1>
 
-        <h1>Оборудование: <span th:text="${hardware.nameHardware}"></span></h1>
-
-        <p>Тип оборудования: <span th:text="${hardware.typeHardware.typeHardware}"></span></p>
-        <p>Напряжение: <span th:text="${hardware.voltage}"></span> В</p>
-        <p>Сила тока: <span th:text="${hardware.amperage}"></span> А</p>
-        <p>Потребление: <span th:text="${hardware.electricityConsumption}"></span> Вт</p>
-        <p>Тип тока: <span th:text="${hardware.typeCurrent.typeCurrent}"></span></p>
-        <p>Необходимое количество units: <span th:text="${hardware.requiredNumberUnits}"></span> u</p>
-        <p>Ширина: <span th:text="${hardware.width}"></span> мм</p>
-        <p>глубина: <span th:text="${hardware.depth}"></span> мм</p>
-
-    </body>
+<table>
+    <tr>
+        <th style="min-width:150px; align:center">Название оборудования</th>
+        <th style="min-width:150px; align:center">Напряжение</th>
+        <th style="min-width:150px; align:center">Сила тока</th>
+        <th style="min-width:150px; align:center">Потребление</th>
+        <th style="min-width:150px; align:center">Высота units</th>
+        <th style="min-width:150px; align:center">Ширина</th>
+        <th style="min-width:150px; align:center">Глубина</th>
+        <th style="min-width:150px; align:center">Тип оборудования</th>
+        <th style="min-width:150px; align:center">Тип тока</th>
+    </tr>
+    <tr th:each="hardware : ${hardware}">
+        <td th:text="${hardware.nameHardware}" align="center"></td>
+        <td th:text="${hardware.voltage}" align="center"></td>
+        <td th:text="${hardware.amperage}" align="center"></td>
+        <td th:text="${hardware.electricityConsumption}" align="center"></td>
+        <td th:text="${hardware.requiredNumberUnits}" align="center"></td>
+        <td th:text="${hardware.width}" align="center"></td>
+        <td th:text="${hardware.depth}" align="center"></td>
+        <td th:text="${hardware.typeHardware.typeHardware}" align="center"></td>
+        <td th:text="${hardware.typeCurrent.typeCurrent}" align="center"></td>
+        <td><button th:onclick="'window.location.href = \'' + @{/api/v1/hardware/{id}(id=${hardware.id})} + '\''">🛈</button></td>
+    </tr>
+</table>
+<button onclick="window.location.href = '/api/v1/hardware/add'">Добавить оборудование</button>
+</body>
 </html>
