@@ -30,8 +30,8 @@
         </select> <br><br>
 
         <input type="submit" value="Добавить"> <br><br>
-        <button th:onclick="'window.location.href = \'' + @{/api/v1/hardware/add/{id}(id=${rackId.id})} + '\''">Добавить оборудование в базу</button>
     </form>
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/hardware/add/{id}(id=${rackId.id})} + '\''">Добавить оборудование в базу</button>
 </div>
 </body>
 </html>

@@ -47,4 +47,12 @@ public class HardwareService {
 
         return hardware;
     }
+
+    public void update(Hardware hardware) {
+        hardwareRepository.save(hardware);
+    }
+
+    public void deleteHardware(Long hardwareId) {
+        hardwareRepository.deleteById(hardwareId);
+    }
 }

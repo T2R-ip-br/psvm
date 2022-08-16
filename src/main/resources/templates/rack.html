@@ -82,6 +82,7 @@
     <button th:onclick="'window.location.href = \'' + @{/api/v1/rack-configuration/add/{id}(id=${rack.id})} + '\''">Добавить оборудование в стойку</button> <br><br>
     <button th:onclick="'window.location.href = \'' + @{/api/v1/connecting-hardware/add/{id}(id=${rack.id})} + '\''">Добавить блок питания в стойку</button> <br><br>
     <button th:onclick="'window.location.href = \'' + @{/api/v1/hardware/add/{id}(id=${rack.id})} + '\''">Добавить оборудование в базу</button> <br><br>
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/hardware} + '\''">Открыть список оборудования</button> <br><br>
     <button th:onclick="'window.location.href = \'' + @{/api/v1/rack/delete/{id}(id=${rack.id})} + '\''">Удалить стойку</button>
   </body>
 

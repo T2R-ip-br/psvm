@@ -18,13 +18,37 @@ public class RackConfigurationService {
 
     private final RackConfigurationRepository rackConfigurationRepository;
 
+    // Сохранение оборудования в стойке
     public void save(RackConfiguration rackConfiguration) {
 
+        // id стойки
         Long rackId = rackConfiguration.getRack().getId();
+        // Высота добавляемого оборудования в юнитах
         int heightAddedHardwareInUnits = rackConfiguration.getHardware().getRequiredNumberUnits();
+        // Юнит планируемой установки оборудования
         int unitAddingHardware = rackConfiguration.getOccupiedUnit();
+        // Высота стойки в юнитах
         int HeightRackInUnits = rackConfiguration.getRack().getRackModel().getUnitHeight();
+        // Список установленного оборудования в стойку
         List<RackConfiguration> rackConfigurations = rackConfigurationRepository.findAllByRackId(rackId);
+        // Допустимая ширина оборудования в стойке
+        int hardwareWidthInRack = rackConfiguration.getRack().getRackModel().getEquipmentWidth();
+        // Ширина добавляемого оборудования
+        int hardwareWidth = rackConfiguration.getHardware().getWidth();
+        // Допустимая глубина оборудования в стойке
+        int hardwareDepthInRack = rackConfiguration.getRack().getRackModel().getUsableDepth();
+        // Глубина оборудования
+        int hardwareDepth = rackConfiguration.getHardware().getDepth();
+
+        // Проверка на то, что оборудование соответствует по ширине
+        if(hardwareWidthInRack != hardwareWidth) {
+            throw new IllegalStateException("The equipment does not match in width");
+        }
+
+        // Проверка на то, что оборудование соответствует по глубине
+        if(hardwareDepthInRack < hardwareDepth) {
+            throw new IllegalStateException("The equipment does not match in depth");
+        }
 
         // собираем список всех занятых юнитов
         List<Integer> occupiedUnits = new ArrayList<>();
@@ -59,6 +83,8 @@ public class RackConfigurationService {
             throw new IllegalStateException("The specified hardware placement unit is above the upper rack unit");
         }
 
+
+
         // Проверка на оригинальность имём оборудования в стойке
         List<RackConfiguration> listAllHardwareNames = rackConfigurationRepository.findAllByRackId(rackId);
         for (RackConfiguration configuration:
@@ -72,6 +98,7 @@ public class RackConfigurationService {
         rackConfigurationRepository.save(rackConfiguration);
     }
 
+    // Метод получения конфигурации стойки
     public List<RackConfiguration> findAllByRackId(Long rackId, int unitHeight) {
 
         List<RackConfiguration> rackConfigurations = rackConfigurationRepository.findAllByRackId(rackId);
@@ -132,6 +159,7 @@ public class RackConfigurationService {
         return initialRackConfiguration;
     }
 
+    // получение конфигурации оборудования в стойке по id
     public RackConfiguration findById(Long rackConfigurationId) {
 
         Optional<RackConfiguration> optionalRackConfiguration = rackConfigurationRepository.findById(rackConfigurationId);

@@ -29,7 +29,24 @@
         <td th:text="${hardware.depth}" align="center"></td>
         <td th:text="${hardware.typeHardware.typeHardware}" align="center"></td>
         <td th:text="${hardware.typeCurrent.typeCurrent}" align="center"></td>
-        <td><button th:onclick="'window.location.href = \'' + @{/api/v1/hardware/{id}(id=${hardware.id})} + '\''">🛈</button></td>
+        <td>
+            <button
+                    th:onclick="'window.location.href = \'' + @{/api/v1/hardware/{id}(id=${hardware.id})} + '\''"
+                    th:title="'Открыть характеристики оборудования'"
+            >🛈</button>
+        </td>
+        <td>
+            <button
+                    th:onclick="'window.location.href = \'' + @{/api/v1/hardware/update/{id}(id=${hardware.id})} + '\''"
+                    th:title="'Редактировать оборудование'"
+            >⮍</button>
+        </td>
+        <td>
+            <button
+                    th:onclick="'window.location.href = \'' + @{/api/v1/hardware/delete/{id}(id=${hardware.id})} + '\''"
+                    th:title="'Удалить оборудование'"
+            >⊗</button>
+        </td>
     </tr>
 </table>
 <button onclick="window.location.href = '/api/v1/hardware/add'">Добавить оборудование</button>
