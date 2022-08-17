@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Удаление оборудования</title>
+</head>
+<body>
+<h1>Вы действительно хотите удалить оборудование <span th:text="${hardware.nameHardware}"></span></h1>
+
+<form th:action="@{/api/v1/hardware/delete/{id}(id=${hardware.id})}" method="post">
+  <input type="submit" value="Удалить">
+</form>
+<button th:onclick="'window.location.href = \'' + @{/api/v1/hardware/} + '\''">Отмена</button>
+</body>
+</html>
