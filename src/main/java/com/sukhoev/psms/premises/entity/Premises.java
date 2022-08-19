@@ -18,7 +18,7 @@ public class Premises {
     @SequenceGenerator(
             name = "premises_sequence",
             sequenceName = "premises_sequence",
-            initialValue = 1,
+            initialValue = 10,
             allocationSize = 1
     )
     @GeneratedValue(

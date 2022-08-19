@@ -71,4 +71,14 @@ public class RackConfigurationController {
         rackConfigurationService.deleteRackConfiguration(rackConfigurationId);
         return new ModelAndView("redirect:/api/v1/rack/" + rackId);
     }
+
+    @GetMapping("/search/{hardwareId}")
+    public String rackSearch(
+            @PathVariable("hardwareId") Long hardwareId,
+            Model model
+    ) {
+        List<Rack> racks = rackConfigurationService.findRackForEquipment(hardwareId);
+        model.addAttribute("racks", racks);
+        return "search-rack";
+    }
 }

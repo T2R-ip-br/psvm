@@ -43,10 +43,17 @@
         </td>
         <td>
             <button
+                    th:onclick="'window.location.href = \'' + @{/api/v1/rack-configuration/search/{id}(id=${hardware.id})} + '\''"
+                    th:title="'Найти подходящую стойку'"
+            >↑</button>
+        </td>
+        <td>
+            <button
                     th:onclick="'window.location.href = \'' + @{/api/v1/hardware/delete/{id}(id=${hardware.id})} + '\''"
                     th:title="'Удалить оборудование'"
             >⊗</button>
         </td>
+
     </tr>
 </table>
 <button onclick="window.location.href = '/api/v1/hardware/add'">Добавить оборудование</button>

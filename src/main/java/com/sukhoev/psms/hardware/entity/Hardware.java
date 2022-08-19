@@ -63,7 +63,7 @@ public class Hardware {
 
     @OneToMany(
             mappedBy = "hardware",
-            orphanRemoval = true,
+            orphanRemoval = false,
             cascade = {CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
@@ -71,8 +71,8 @@ public class Hardware {
 
     @OneToMany(
             mappedBy = "hardware",
-            orphanRemoval = true,
-            cascade = {CascadeType.PERSIST},
+            orphanRemoval = false,
+            cascade = {CascadeType.ALL},
             fetch = FetchType.LAZY
     )
     private List<ConnectingHardware> connectingHardware = new ArrayList<>();

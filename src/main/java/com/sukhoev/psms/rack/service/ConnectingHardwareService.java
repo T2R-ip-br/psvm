@@ -12,6 +12,7 @@ import java.util.List;
 public class ConnectingHardwareService {
 
     private final ConnectingHardwareRepository connectingHardwareRepository;
+    private final RackService rackService;
 
     public List<ConnectingHardware> findAll() {
 

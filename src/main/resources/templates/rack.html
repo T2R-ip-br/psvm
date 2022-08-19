@@ -25,6 +25,15 @@
     <p>Максимальная нагрузка: <span th:text="${rackModel.maximumLoad}"></span></p>
     <br>
 
+    <h3>Нагрузка</h3>
+
+    <div th:each="load : ${load}">
+      <h4><span th:text="${load.connectionName}"></span>:</h4>
+      <p>Pmax: <span th:text="${load.maxLoad}"></span> Вт</p>
+      <p>Pзапас: <span th:text="${load.reserveLoad}"></span> Вт</p>
+    </div>
+
+    <br>
     <p>Фасад шкафа</p>
 
     <table style="border: 1px solid grey">

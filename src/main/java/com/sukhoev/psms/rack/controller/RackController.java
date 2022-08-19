@@ -8,6 +8,7 @@ import com.sukhoev.psms.rack.entity.RackModel;
 import com.sukhoev.psms.rack.service.RackConfigurationService;
 import com.sukhoev.psms.rack.service.RackModelService;
 import com.sukhoev.psms.rack.service.RackService;
+import com.sukhoev.psms.rack.serviceСlass.Load;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,10 +35,12 @@ public class RackController {
         Rack rack = rackService.findById(rackId);
         Premises premises = rack.getPremises();
         RackModel rackModel = rack.getRackModel();
+        List<Load> load = rackService.getAllLoad(rack);
         List<RackConfiguration> rackConfigurations = rackConfigurationService.findAllByRackId(rackId, rackModel.getUnitHeight());
         model.addAttribute("rack", rack);
         model.addAttribute("premises", premises);
         model.addAttribute("rackModel", rackModel);
+        model.addAttribute("load", load);
         model.addAttribute("rackConfigurations", rackConfigurations);
 
         return "rack";
