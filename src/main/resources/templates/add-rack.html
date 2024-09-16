@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8"/>
+  <title>Добавить стойку</title>
+</head>
+
+<body>
+<div style="margin-left:50px ">
+  <h1>Добавить стойку</h1>
+
+  <form method="POST" th:action="@{/api/v1/rack/add/{id}(id=${premises.id})}" th:object="${rack}">
+    <input id="nameRack" placeholder="Название стойки" required type="text" th:field="*{nameRack}"/> <br><br>
+
+    <select th:field="*{premises}">
+      <option th:value="${premises.id}" th:text="'г. ' + ${premises.city} + ', ' + ${premises.building} + ', ' + ${premises.room}"></option></option>
+      <option th:each="allPremises : ${allPremises}" th:value="${allPremises.id}" th:text="'г. ' + ${allPremises.city} + ', ' + ${allPremises.building} + ', ' + ${allPremises.room}"></option>
+    </select> <br><br>
+
+    <select th:field="*{rackModel}">
+      <option th:each="model : ${rackModels}" th:value="${model.id}" th:text="${model.nameModelRack} + ', Высота unit: ' + ${model.unitHeight} + ', Ширина оборудования: ' + ${model.equipmentWidth} + ' мм, Полезная глубина: ' + ${model.usableDepth} + ' мм' "></option>
+    </select> <br><br>
+
+    <input type="submit" value="Добавить"> <br>
+  </form>
+  <button th:onclick="'window.location.href = \'' + @{/api/v1/rack-model/add/{id}(id=${premises.id})} + '\''">Добавить модель стойки</button>
+</div>
+</body>
+</html>

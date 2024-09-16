@@ -1,5 +1,6 @@
 package com.sukhoev.psms.hardware.entity;
 
+import com.sukhoev.psms.rack.entity.ConnectingHardware;
 import com.sukhoev.psms.rack.entity.RackConfiguration;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -33,7 +34,7 @@ public class Hardware {
     private String nameHardware;
     private Integer voltage;
     private Integer amperage;
-    private Integer electricityСonsumption;
+    private Integer electricityConsumption;
     private Integer requiredNumberUnits;
     private Integer width;
     private Integer depth;
@@ -58,35 +59,57 @@ public class Hardware {
                     name = "type_current_fk"
             )
     )
-    private TypeСurrent typeСurrent;
+    private TypeCurrent typeCurrent;
 
     @OneToMany(
             mappedBy = "hardware",
-            orphanRemoval = true,
-            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            orphanRemoval = false,
+            cascade = {CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
     private List<RackConfiguration> rackConfigurations = new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "hardware",
+            orphanRemoval = false,
+            cascade = {CascadeType.ALL},
+            fetch = FetchType.LAZY
+    )
+    private List<ConnectingHardware> connectingHardware = new ArrayList<>();
 
     public Hardware(
             String nameHardware,
             Integer voltage,
             Integer amperage,
-            Integer electricityСonsumption,
+            Integer electricityConsumption,
             Integer requiredNumberUnits,
             Integer width,
             Integer depth,
             TypeHardware typeHardware,
-            TypeСurrent typeСurrent
+            TypeCurrent typeCurrent
     ) {
         this.nameHardware = nameHardware;
         this.voltage = voltage;
         this.amperage = amperage;
-        this.electricityСonsumption = electricityСonsumption;
+        this.electricityConsumption = electricityConsumption;
         this.requiredNumberUnits = requiredNumberUnits;
         this.width = width;
         this.depth = depth;
         this.typeHardware = typeHardware;
-        this.typeСurrent = typeСurrent;
+        this.typeCurrent = typeCurrent;
+    }
+
+    @Override
+    public String toString() {
+        return "Hardware{" +
+                "id=" + id +
+                ", nameHardware='" + nameHardware + '\'' +
+                ", voltage=" + voltage +
+                ", amperage=" + amperage +
+                ", electricityConsumption=" + electricityConsumption +
+                ", requiredNumberUnits=" + requiredNumberUnits +
+                ", width=" + width +
+                ", depth=" + depth +
+                '}';
     }
 }

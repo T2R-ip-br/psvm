@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -41,7 +43,6 @@ public class ConnectingHardware {
     )
     private Hardware hardware;
 
-    // TODO: id rack
     @ManyToOne
     @JoinColumn(
             name = "rack_id",
@@ -52,6 +53,14 @@ public class ConnectingHardware {
             )
     )
     private Rack rack;
+
+    @OneToMany(
+            mappedBy = "connectingHardware",
+            orphanRemoval = true,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY
+    )
+    private List<RackConfiguration> rackConfigurations = new ArrayList<>();
 
 
     public ConnectingHardware(

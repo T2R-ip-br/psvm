@@ -1,12 +1,10 @@
 package com.sukhoev.psms.rack.entity;
 
 import com.sukhoev.psms.hardware.entity.Hardware;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.Comparator;
 
 @Getter
 @Setter
@@ -83,5 +81,22 @@ public class RackConfiguration {
         this.rack = rack;
         this.connectingHardware = connectingHardware;
         this.hardware = hardware;
+    }
+
+    public RackConfiguration(String nameHardware, Integer occupiedUnit, Integer powerCableLength) {
+        this.nameHardware = nameHardware;
+        this.occupiedUnit = occupiedUnit;
+        this.powerCableLength = powerCableLength;
+    }
+
+    @Override
+    public String toString() {
+        return "RackConfiguration{" +
+                "id=" + id +
+                ", nameHardware='" + nameHardware + '\'' +
+                ", occupiedUnit=" + occupiedUnit +
+                ", powerCableLength=" + powerCableLength +
+                ", powerCableCrossSection=" + powerCableCrossSection +
+                '}';
     }
 }

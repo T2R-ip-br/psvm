@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8"/>
+  <title>Добавить модель стойки</title>
+</head>
+
+<body>
+<div style="margin-left:50px ">
+  <h1>Добавить модель стойки</h1>
+
+  <form method="POST" th:action="@{/api/v1/rack-model/add/{id}(id=${premisesId})}" th:object="${rackModel}">
+    <input id="nameModelRack" placeholder="Название модели" required type="text" th:field="*{nameModelRack}"/> <br><br>
+    <input id="unitHeight" placeholder="Высота unit" required type="text" th:field="*{unitHeight}"/> <br><br>
+    <input id="equipmentWidth" placeholder="Ширина оборудования, мм" required type="text" th:field="*{equipmentWidth}"/> <br><br>
+    <input id="usableDepth" placeholder="Полезная глубина, мм" required type="text" th:field="*{usableDepth}"/> <br><br>
+    <input id="doorType" placeholder="Тип двери" required type="text" th:field="*{doorType}"/> <br><br>
+    <input id="height" placeholder="Высота стойки, мм" required type="text" th:field="*{height}"/> <br><br>
+    <input id="width" placeholder="Ширина стойки, мм" required type="text" th:field="*{width}"/> <br><br>
+    <input id="depth" placeholder="Глубина стойки, мм" required type="text" th:field="*{depth}"/> <br><br>
+    <input id="manufacturer" placeholder="Производитель" required type="text" th:field="*{manufacturer}"/> <br><br>
+    <input id="maximumLoad" placeholder="Максимальная нагрузка, Вт" required type="text" th:field="*{maximumLoad}"/> <br><br>
+    <input type="submit" value="Добавить">
+  </form>
+</div>
+</body>
+</html>

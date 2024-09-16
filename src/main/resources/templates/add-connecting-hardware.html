@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Добавить блок питания в стойку</title>
+</head>
+
+<body>
+<div style="margin-left:50px ">
+    <h1>Добавить блок питания в стойку</h1>
+
+    <form method="POST" th:action="@{/api/v1/connecting-hardware/add/{id}(id=${rackId.id})}" th:object="${connectingHardware}">
+        <input id="namePowerSupplyUnit" placeholder="Имя блока питания" required type="text" th:field="*{namePowerSupplyUnit}"/> <br><br>
+
+        <select th:field="*{rack}">
+            <option th:value="${rackId.id}" th:text="${rackId.nameRack}">
+            <option th:each="racks : ${racks}" th:value="${racks.id}" th:text="${racks.nameRack}"></option>
+        </select> <br><br>
+
+        <select th:field="*{hardware}">
+            <option th:each="hardware : ${hardware}" th:value="${hardware.id}" th:text="${hardware.nameHardware}"></option>
+        </select> <br><br>
+
+        <input type="submit" value="Добавить">
+    </form>
+</div>
+</body>
+</html>

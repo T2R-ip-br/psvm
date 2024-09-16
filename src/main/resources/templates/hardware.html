@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр оборудования</title>
+</head>
+<body>
+<h1>Просмотр оборудования</h1>
+
+<table>
+    <tr>
+        <th style="min-width:150px; align:center">Название оборудования</th>
+        <th style="min-width:150px; align:center">Напряжение</th>
+        <th style="min-width:150px; align:center">Сила тока</th>
+        <th style="min-width:150px; align:center">Потребление</th>
+        <th style="min-width:150px; align:center">Высота units</th>
+        <th style="min-width:150px; align:center">Ширина</th>
+        <th style="min-width:150px; align:center">Глубина</th>
+        <th style="min-width:150px; align:center">Тип оборудования</th>
+        <th style="min-width:150px; align:center">Тип тока</th>
+    </tr>
+    <tr th:each="hardware : ${hardware}">
+        <td th:text="${hardware.nameHardware}" align="center"></td>
+        <td th:text="${hardware.voltage}" align="center"></td>
+        <td th:text="${hardware.amperage}" align="center"></td>
+        <td th:text="${hardware.electricityConsumption}" align="center"></td>
+        <td th:text="${hardware.requiredNumberUnits}" align="center"></td>
+        <td th:text="${hardware.width}" align="center"></td>
+        <td th:text="${hardware.depth}" align="center"></td>
+        <td th:text="${hardware.typeHardware.typeHardware}" align="center"></td>
+        <td th:text="${hardware.typeCurrent.typeCurrent}" align="center"></td>
+        <td>
+            <button
+                    th:onclick="'window.location.href = \'' + @{/api/v1/hardware/{id}(id=${hardware.id})} + '\''"
+                    th:title="'Открыть характеристики оборудования'"
+            >🛈</button>
+        </td>
+        <td>
+            <button
+                    th:onclick="'window.location.href = \'' + @{/api/v1/hardware/update/{id}(id=${hardware.id})} + '\''"
+                    th:title="'Редактировать оборудование'"
+            >⮍</button>
+        </td>
+        <td>
+            <button
+                    th:onclick="'window.location.href = \'' + @{/api/v1/rack-configuration/search/{id}(id=${hardware.id})} + '\''"
+                    th:title="'Найти подходящую стойку'"
+            >↑</button>
+        </td>
+        <td>
+            <button
+                    th:onclick="'window.location.href = \'' + @{/api/v1/hardware/delete/{id}(id=${hardware.id})} + '\''"
+                    th:title="'Удалить оборудование'"
+            >⊗</button>
+        </td>
+
+    </tr>
+</table>
+<button onclick="window.location.href = '/api/v1/hardware/add'">Добавить оборудование</button>
+</body>
+</html>

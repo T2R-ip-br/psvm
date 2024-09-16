@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8"/>
+  <title>Добавить оборудование</title>
+</head>
+
+<body>
+<div style="margin-left:50px ">
+  <h1>Добавить оборудование</h1>
+
+  <form method="POST" th:action="@{/api/v1/hardware/add/{id}(id=${rackId})}" th:object="${hardware}">
+    <input id="nameHardware" placeholder="Название оборудования" required type="text" th:field="*{nameHardware}"/> <br><br>
+    <input id="voltage" placeholder="Напряжение" required type="text" th:field="*{voltage}"/> <br><br>
+    <input id="amperage" placeholder="Сила тока" required type="text" th:field="*{amperage}"/> <br><br>
+    <input id="electricityConsumption" placeholder="Потребление" required type="text" th:field="*{electricityConsumption}"/> <br><br>
+    <input id="requiredNumberUnits" placeholder="Необходимое количество units" required type="text" th:field="*{requiredNumberUnits}"/> <br><br>
+    <input id="width" placeholder="Ширина" required type="text" th:field="*{width}"/> <br><br>
+    <input id="depth" placeholder="Глубина" required type="text" th:field="*{depth}"/> <br><br>
+
+    <select th:field="*{typeHardware}">
+      <option th:each="typeHardware : ${typeHardware}" th:value="${typeHardware.id}" th:text="${typeHardware.typeHardware}"></option>
+    </select> <br><br>
+
+    <select th:field="*{typeCurrent}">
+      <option th:each="typeCurrents : ${typeCurrents}" th:value="${typeCurrents.id}" th:text="${typeCurrents.typeCurrent}"></option>
+    </select> <br><br>
+
+    <input type="submit" value="Добавить">
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Добавить оборудование в стойку</title>
+</head>
+
+<body>
+<div style="margin-left:50px ">
+    <h1>Добавить оборудование в стойку</h1>
+
+    <form method="POST" th:action="@{/api/v1/rack-configuration/add/{id}(id=${rackId.id})}" th:object="${rackConfiguration}">
+        <input id="nameHardware" placeholder="Имя оборудования" required type="text" th:field="*{nameHardware}"/> <br><br>
+        <input id="occupiedUnit" placeholder="Занимаемый unit" required type="text" th:field="*{occupiedUnit}"/> <br><br>
+        <input id="powerCableLength" placeholder="Длина кабеля" required type="text" th:field="*{powerCableLength}"/> <br><br>
+        <input id="powerCableCrossSection" placeholder="Сечение кабеля" required type="text" th:field="*{powerCableCrossSection}"/> <br><br>
+
+        <select th:field="*{rack}">
+            <option th:value="${rackId.id}" th:text="${rackId.nameRack}">
+            <option th:each="racks : ${racks}" th:value="${racks.id}" th:text="${racks.nameRack}"></option>
+        </select> <br><br>
+
+        <select th:field="*{connectingHardware}">
+            <option th:each="connectingHardware : ${connectingHardware}" th:value="${connectingHardware.id}" th:text="${connectingHardware.namePowerSupplyUnit}"></option>
+        </select> <br><br>
+
+        <select th:field="*{hardware}">
+            <option th:each="hardware : ${hardware}" th:value="${hardware.id}" th:text="${hardware.nameHardware}"></option>
+        </select> <br><br>
+
+        <input type="submit" value="Добавить"> <br><br>
+    </form>
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/hardware/add/{id}(id=${rackId.id})} + '\''">Добавить оборудование в базу</button>
+</div>
+</body>
+</html>

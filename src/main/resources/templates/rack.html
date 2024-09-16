@@ -23,7 +23,76 @@
     <p>Глубина стойки: <span th:text="${rackModel.depth}"></span></p>
     <p>Производитель: <span th:text="${rackModel.manufacturer}"></span></p>
     <p>Максимальная нагрузка: <span th:text="${rackModel.maximumLoad}"></span></p>
+    <br>
 
+    <h3>Нагрузка</h3>
+
+    <div th:each="load : ${load}">
+      <h4><span th:text="${load.connectionName}"></span>:</h4>
+      <p>Pmax: <span th:text="${load.maxLoad}"></span> Вт</p>
+      <p>Pзапас: <span th:text="${load.reserveLoad}"></span> Вт</p>
+    </div>
+
+    <br>
+    <p>Фасад шкафа</p>
+
+    <table style="border: 1px solid grey">
+
+      <tr>
+        <th style="min-width:150px; border: 1px solid grey; align:center">Оборудование</th>
+        <th style="min-width:150px; border: 1px solid grey; align:center">Unit</th>
+      </tr>
+
+      <tr th:each="rackConfiguration : ${rackConfigurations}">
+
+        <td
+                th:text="${rackConfiguration.nameHardware}"
+                th:if="${rackConfiguration.hardware != null}"
+                th:rowspan="${rackConfiguration.hardware.requiredNumberUnits}"
+                align="center" style="border: 1px solid grey" >
+        </td>
+
+          <td
+                  th:text="${rackConfiguration.nameHardware}"
+                  th:if="${rackConfiguration.powerCableLength == 101}"
+                  align="center" style="border: 1px solid grey" >
+          </td>
+
+        <td
+                th:text="${rackConfiguration.occupiedUnit}"
+                align="center" style="border: 1px solid grey">
+        </td>
+
+        <td
+                th:rowspan="${rackConfiguration.hardware.requiredNumberUnits}"
+                th:if="${rackConfiguration.hardware != null}">
+          <button
+                  th:onclick="'window.location.href = \'' + @{/api/v1/hardware/{id}(id=${rackConfiguration.hardware.id})} + '\''"
+                  th:if="${rackConfiguration.hardware != null}"
+                  th:title="'Открыть характеристики оборудования: ' + ${rackConfiguration.hardware.nameHardware}">
+            🛈
+          </button>
+        </td>
+
+        <td
+                th:rowspan="${rackConfiguration.hardware.requiredNumberUnits}"
+                th:if="${rackConfiguration.hardware != null}">
+          <button
+                  th:onclick="'window.location.href = \'' + @{/api/v1/rack-configuration/delete/{id}(id=${rackConfiguration.id})} + '\''"
+                  th:if="${rackConfiguration.hardware != null}"
+                  th:title="'Убрать оборудование ' + ${rackConfiguration.hardware.nameHardware} + ' из стойки'">
+            ⊗
+          </button>
+        </td>
+
+    </table>
+
+     <br>
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/rack-configuration/add/{id}(id=${rack.id})} + '\''">Добавить оборудование в стойку</button> <br><br>
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/connecting-hardware/add/{id}(id=${rack.id})} + '\''">Добавить блок питания в стойку</button> <br><br>
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/hardware/add/{id}(id=${rack.id})} + '\''">Добавить оборудование в базу</button> <br><br>
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/hardware} + '\''">Открыть список оборудования</button> <br><br>
+    <button th:onclick="'window.location.href = \'' + @{/api/v1/rack/delete/{id}(id=${rack.id})} + '\''">Удалить стойку</button>
   </body>
 
 </html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Удаление стойки</title>
+</head>
+<body>
+<h1>Вы действительно хотите удалить стойку <span th:text="${rack.nameRack}"></span></h1>
+
+<form th:action="@{/api/v1/rack/delete/{id}(id=${rack.id})}" method="post">
+  <input type="submit" value="Удалить">
+</form>
+<button th:onclick="'window.location.href = \'' + @{/api/v1/rack/{id}(id=${rack.id})} + '\''">Отмена</button>
+</body>
+</html>

@@ -18,7 +18,13 @@ public class PremisesService {
     private final PremisesRepository premisesRepository;
 
     public List<Premises> findAll() {
-        return premisesRepository.findAll();
+        List<Premises> premises = premisesRepository.findAll();
+
+        if(premises.isEmpty()) {
+            throw new IllegalStateException("premises not found");
+        }
+
+        return premises;
     }
 
     public List<Rack> findRacksByPremisesId(Long premisesId) {
